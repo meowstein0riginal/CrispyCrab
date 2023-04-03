@@ -6,7 +6,6 @@ TO DO:
 - edit and delete functions for restaurant employees
 - total cost of inventory for restaurant employees
 - total revenue of the day for restaurant employees
-- inventory to restock for restaurant employees
 - frontend css
 
  ************************
