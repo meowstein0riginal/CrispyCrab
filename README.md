@@ -2,7 +2,6 @@
 *******************************
 TO DO:
 
-- substracting ingredients while adding new purchase orders
 - logging in for customers and restaurant employees
 - edit and delete functions for restaurant employees
 - total cost of inventory for restaurant employees

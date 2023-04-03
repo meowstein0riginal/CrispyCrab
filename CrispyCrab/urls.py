@@ -32,7 +32,9 @@ urlpatterns = [
 
     path('purchases/list', views.PurchaseList.as_view(), name='purchaselist'),
 
-    path('purchases/create', views.PurchaseCreate.as_view(), name='purchasecreate')
+    path('purchases/create', views.PurchaseCreate.as_view(), name='purchasecreate'),
+
+    path('restock_list', views.RestockList.as_view(), name='restocklist'),
 
 
 

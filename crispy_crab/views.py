@@ -78,3 +78,13 @@ class PurchaseCreate(TemplateView):
         purchase.save()
 
         return redirect("/purchases/list")
+
+
+class RestockList(TemplateView):
+    template_name = "crispy_crab/restock_list.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["ingredients"] = [ingredient for ingredient in Ingredients.objects.all() if ingredient.ordering_qty() > 0]
+        return context
+
