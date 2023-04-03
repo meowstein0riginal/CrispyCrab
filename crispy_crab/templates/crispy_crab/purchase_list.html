@@ -1,0 +1,33 @@
+{% extends "crispy_crab/base.html" %}
+
+{% block content %}
+<h3>Menu Items</h3>
+<hr>
+<a href="{% url 'purchasecreate'%}"><button class="btn">Add Order</button></a>
+
+<br>
+<br>
+
+<table border = 1 id="purchase_table">
+  <tr>
+    <th>Order Number</th>
+    <th>Order Datetime</th>
+    <th>Menu items</th>
+    <th>Table</th>
+      <th> </th>
+      <th> </th>
+  </tr>
+
+{% for purchase in purchase_list %}
+<tr>
+  <td>{{ purchase.id }} </td>
+  <td>{{ purchase.order_time }} </td>
+  <td>{{ purchase.menu_items }} </td>
+  <td>{{ purchase.table }} </td>
+
+
+</tr>
+{% endfor %}
+
+</table>
+{% endblock %}

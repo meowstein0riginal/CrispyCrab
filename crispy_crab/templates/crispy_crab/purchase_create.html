@@ -1,0 +1,19 @@
+{% extends "crispy_crab/base.html" %}
+
+{% block content %}
+<h3>Add Purchase:</h3>
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+
+  <label for="menu_item">Menu Item:</label>
+  <select name="menu_item" id="menu_item" required>
+    {% for menu_item in menu_items %}
+      <option value={{ menu_item.id }}>{{ menu_item.item_name }}</option>
+    {% endfor %}
+
+  <label for="table">Table Number:</label>
+  <input name="table" id="table"/>
+  <input type="submit" value="Submit"/>
+</form>
+{% endblock %}

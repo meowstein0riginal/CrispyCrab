@@ -1,0 +1,39 @@
+{% extends "crispy_crab/base.html" %}
+
+{% block content %}
+<h3>Ingredients</h3>
+<hr>
+<a href="{% url 'ingredientscreate'%}"><button class="btn">Add Ingredient</button></a>
+
+<br>
+<br>
+
+
+<table border = 1 id="ingredients_table">
+  <tr>
+    <th>Name</th>
+    <th>Quantity</th>
+    <th>Minimal Quantity</th>
+    <th>Unit</th>
+    <th>Multi-Pack Quantity</th>
+    <th>Multi-Pack Price</th>
+    <th>Price Per Unit</th>
+      <th> </th>
+      <th> </th>
+  </tr>
+
+{% for ingredient in ingredients_list %}
+<tr>
+  <td>{{ ingredient.ing_name }} </td>
+  <td>{{ ingredient.ing_quantity }} </td>
+  <td>{{ ingredient.minimal_quantity }} </td>
+  <td>{{ ingredient.unit }} </td>
+  <td>{{ ingredient.multi_pack_quantity }} </td>
+  <td>{{ ingredient.multi_pack_price }} </td>
+  <td>{{ ingredient.price_per_unit }} </td>
+
+
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

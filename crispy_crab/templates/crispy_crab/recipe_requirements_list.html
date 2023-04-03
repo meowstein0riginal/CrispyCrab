@@ -1,0 +1,32 @@
+{% extends "crispy_crab/base.html" %}
+
+{% block content %}
+<h3>Recipe Requirements</h3>
+<hr>
+<a href="{% url 'reciperequirementscreate'%}"><button class="btn">Add Recipe Requirement</button></a>
+
+<br>
+
+<table border = 1 id="menu_items_table">
+  <tr>
+    <th>Name</th>
+    <th>Menu Item</th>
+    <th>Ingredient</th>
+    <th>Quantity</th>
+    <th>Price</th>
+      <th> </th>
+      <th> </th>
+  </tr>
+
+{% for req in reciperequirements_list %}
+<tr>
+  <td>{{ req }} </td>
+  <td>{{ req.menu_item }} </td>
+  <td>{{ req.ingredient }} </td>
+  <td>{{ req.quantity }} </td>
+  <td>{{ req.calc_price }} </td>
+</tr>
+{% endfor %}
+
+</table>
+{% endblock %}
