@@ -25,7 +25,9 @@ urlpatterns = [
     path('ingredients/create', views.IngredientsCreate.as_view(), name='ingredientscreate'),
 
     path('menu_items/list', views.MenuItemsList.as_view(), name='menuitemslist'),
-    path('menu_items/create', views.MenuItemsCreate.as_view(), name='menuitemscreate'),
+
+    path('menu_items_management/list', views.MenuItemsManagementList.as_view(), name='menuitemsmanagementlist'),
+    path('menu_items_management/create', views.MenuItemsManagementCreate.as_view(), name='menuitemsmanagementcreate'),
 
     path('recipe_requirements/list', views.RecipeRequirementsList.as_view(), name='reciperequirementslist'),
     path('recipe_requirements/create', views.RecipeRequirementsCreate.as_view(), name='reciperequirementscreate'),

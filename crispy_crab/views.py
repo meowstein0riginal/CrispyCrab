@@ -31,9 +31,14 @@ class MenuItemsList(ListView):
     template_name = "crispy_crab/menu_items_list.html"
 
 
-class MenuItemsCreate(CreateView):
+class MenuItemsManagementList(ListView):
     model = MenuItems
-    template_name = "crispy_crab/menu_items_create.html"
+    template_name = "crispy_crab/menu_items_management_list.html"
+
+
+class MenuItemsManagementCreate(CreateView):
+    model = MenuItems
+    template_name = "crispy_crab/menu_items_management_create.html"
     form_class = MenuItemsCreateForm
 
 
