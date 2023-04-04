@@ -47,8 +47,8 @@ class Ingredients(models.Model):
 
 class MenuItems(models.Model):
     item_name = models.CharField(max_length=30, unique=True)
-    item_description = models.CharField(max_length=150)
-    item_price = models.DecimalField(max_digits=5, decimal_places=2)
+    item_description = models.CharField(max_length=150, default="recipe requirements not complete")
+    item_price = models.DecimalField(max_digits=5, decimal_places=2, default=0)
 
 
     class Meta:

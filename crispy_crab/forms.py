@@ -8,6 +8,12 @@ class IngredientsCreateForm(forms.ModelForm):
         fields = "__all__"
 
 
+class IngredientsUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Ingredients
+        fields = "__all__"
+
+
 class MenuItemsCreateForm(forms.ModelForm):
     class Meta:
         model = MenuItems
@@ -17,7 +23,7 @@ class MenuItemsCreateForm(forms.ModelForm):
 class MenuItemsCreateForm(forms.ModelForm):
     class Meta:
         model = MenuItems
-        fields = ("item_name", "item_description", "item_price")
+        fields = "__all__"
 
 
 class RecipeRequirementsCreateForm(forms.ModelForm):

@@ -5,8 +5,8 @@ from django.shortcuts import redirect
 
 from crispy_crab.models import Ingredients, MenuItems, RecipeRequirements, Purchase
 from django.views.generic import ListView, TemplateView
-from django.views.generic.edit import CreateView
-from crispy_crab.forms import IngredientsCreateForm, MenuItemsCreateForm, RecipeRequirementsCreateForm
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from crispy_crab.forms import IngredientsCreateForm, MenuItemsCreateForm, RecipeRequirementsCreateForm, IngredientsUpdateForm
 from django.http import HttpResponse, HttpRequest
 
 from django.core.exceptions import SuspiciousOperation
@@ -24,6 +24,13 @@ class IngredientsCreate(CreateView):
     model = Ingredients
     template_name = "crispy_crab/ingredients_create.html"
     form_class = IngredientsCreateForm
+
+
+class IngredientsUpdate(UpdateView):
+    model = Ingredients
+    template_name = "crispy_crab/ingredients_update.html"
+    form_class = IngredientsUpdateForm
+    success_url = "/ingredients/list"
 
 
 class MenuItemsList(ListView):
