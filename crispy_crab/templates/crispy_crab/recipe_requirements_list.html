@@ -15,9 +15,6 @@
     <th>Menu Item</th>
     <th>Ingredient</th>
     <th>Quantity</th>
-    <th>Price</th>
-      <th> </th>
-      <th> </th>
   </tr>
 
 {% for req in reciperequirements_list %}
@@ -26,9 +23,11 @@
   <td>{{ req.menu_item }} </td>
   <td>{{ req.ingredient }} </td>
   <td>{{ req.quantity }} </td>
-  <td>{{ req.calc_price }} </td>
+  <td>
+    <a href="{% url 'reciperequirementsupdate' req.id %}"><button>Edit</button></a>
+    <a href="{% url 'reciperequirementsdelete' req.id %}"><button>Delete</button></a>
+  </td>
 </tr>
 {% endfor %}
-
 </table>
 {% endblock %}

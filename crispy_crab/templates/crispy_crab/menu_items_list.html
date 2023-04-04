@@ -12,17 +12,15 @@
     <th>Description</th>
     <th>Ingredients</th>
     <th>Price</th>
-    <th>Is available?</th>
   </tr>
 
 {% for menu_item in menuitems_list  %}
-{% if menu_item.item_description != "recipe requirements not complete" %}
+{% if menu_item.item_description != "recipe requirements not complete" and menu_item.is_available is True %}
 <tr>
   <td>{{ menu_item.item_name }} </td>
   <td>{{ menu_item.item_description }} </td>
   <td>{{ menu_item.ingredients }} </td>
   <td>{{ menu_item.item_price }} </td>
-  <td>{{ menu_item.is_available }} </td>
 </tr>
 {% endif %}
 {% endfor %}

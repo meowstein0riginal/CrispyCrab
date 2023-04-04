@@ -1,6 +1,7 @@
 {% extends "crispy_crab/base.html" %}
 
 {% block content %}
+<hr>
 <h3>Add Purchase:</h3>
 <form method="POST">
   {% csrf_token %}
@@ -8,12 +9,17 @@
 
   <label for="menu_item">Menu Item:</label>
   <select name="menu_item" id="menu_item" required>
+    <option value selected>-----</option>
     {% for menu_item in menu_items %}
       <option value={{ menu_item.id }}>{{ menu_item.item_name }}</option>
     {% endfor %}
-
+  </select>
+  <br>
+  <br>
   <label for="table">Table Number:</label>
-  <input name="table" id="table"/>
+  <input name="table" id="table" required/>
+  <br>
+  <br>
   <input type="submit" value="Submit"/>
 </form>
 {% endblock %}

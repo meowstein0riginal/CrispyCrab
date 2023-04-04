@@ -16,10 +16,8 @@
     <th>Description</th>
     <th>Availability</th>
     <th>Ingredients Cost</th>
-    <th>Price</th>
+    <th>Cost of Ingredients</th>
 
-      <th> </th>
-      <th> </th>
   </tr>
 
 {% for menu_item in menuitems_list %}
@@ -30,6 +28,10 @@
   <td>{{ menu_item.availability }} </td>
   <td>{{ menu_item.ingredient_cost }} </td>
   <td>{{ menu_item.item_price }} </td>
+  <td>
+    <a href="{% url 'menuitemsmanagementupdate' menu_item.id %}"><button>Edit</button></a>
+    <a href="{% url 'menuitemsmanagementdelete' menu_item.id %}"><button>Delete</button></a>
+  </td>
 </tr>
 {% endfor %}
 

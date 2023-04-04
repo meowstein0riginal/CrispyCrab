@@ -1,0 +1,12 @@
+{% extends "crispy_crab/base.html" %}
+{% block content %}
+<hr>
+<h2>Delete Menu Item</h2>
+<form method="post">
+<div>
+  {% csrf_token %}
+  <p>Are you sure you want to delete "{{ object }}"?</p>
+  <input type="submit" value="Confirm" />
+</div>
+</form>
+{% endblock %}

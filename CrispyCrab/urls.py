@@ -24,14 +24,19 @@ urlpatterns = [
     path('ingredients/list', views.IngredientsList.as_view(), name='ingredientslist'),
     path('ingredients/create', views.IngredientsCreate.as_view(), name='ingredientscreate'),
     path('ingredients/update/<pk>', views.IngredientsUpdate.as_view(), name='ingredientsupdate'),
+    path('ingredients/delete/<pk>', views.IngredientsDelete.as_view(), name='ingredientsdelete'),
 
     path('menu_items/list', views.MenuItemsList.as_view(), name='menuitemslist'),
 
     path('menu_items_management/list', views.MenuItemsManagementList.as_view(), name='menuitemsmanagementlist'),
     path('menu_items_management/create', views.MenuItemsManagementCreate.as_view(), name='menuitemsmanagementcreate'),
+    path('menu_items_management/update/<pk>', views.MenuItemsManagementUpdate.as_view(), name='menuitemsmanagementupdate'),
+    path('menu_items_management/delete/<pk>', views.MenuItemsManagementDelete.as_view(), name='menuitemsmanagementdelete'),
 
     path('recipe_requirements/list', views.RecipeRequirementsList.as_view(), name='reciperequirementslist'),
     path('recipe_requirements/create', views.RecipeRequirementsCreate.as_view(), name='reciperequirementscreate'),
+    path('recipe_requirements/update/<pk>', views.RecipeRequirementsUpdate.as_view(), name='reciperequirementsupdate'),
+    path('recipe_requirements/delete/<pk>', views.RecipeRequirementsDelete.as_view(), name='reciperequirementsdelete'),
 
     path('purchases/list', views.PurchaseList.as_view(), name='purchaselist'),
 

@@ -20,13 +20,19 @@ class MenuItemsCreateForm(forms.ModelForm):
         fields = "__all__"
 
 
-class MenuItemsCreateForm(forms.ModelForm):
+class MenuItemsManagementUpdateForm(forms.ModelForm):
     class Meta:
         model = MenuItems
         fields = "__all__"
 
 
 class RecipeRequirementsCreateForm(forms.ModelForm):
+    class Meta:
+        model = RecipeRequirements
+        fields = "__all__"
+
+
+class RecipeRequirementsUpdateForm(forms.ModelForm):
     class Meta:
         model = RecipeRequirements
         fields = "__all__"

@@ -1,7 +1,8 @@
 {% extends "crispy_crab/base.html" %}
 
 {% block content %}
-<h3>Edit ingredient:</h3>
+<hr>
+<h3>Edit Ingredient:</h3>
 <form method="POST">
   {% csrf_token %}
   {{ form.as_p }}

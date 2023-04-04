@@ -6,7 +6,8 @@ from django.shortcuts import redirect
 from crispy_crab.models import Ingredients, MenuItems, RecipeRequirements, Purchase
 from django.views.generic import ListView, TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from crispy_crab.forms import IngredientsCreateForm, MenuItemsCreateForm, RecipeRequirementsCreateForm, IngredientsUpdateForm
+from crispy_crab.forms import IngredientsCreateForm, MenuItemsCreateForm, RecipeRequirementsCreateForm
+from crispy_crab.forms import IngredientsUpdateForm, MenuItemsManagementUpdateForm, RecipeRequirementsUpdateForm
 from django.http import HttpResponse, HttpRequest
 
 from django.core.exceptions import SuspiciousOperation
@@ -33,6 +34,12 @@ class IngredientsUpdate(UpdateView):
     success_url = "/ingredients/list"
 
 
+class IngredientsDelete(DeleteView):
+    model = Ingredients
+    template_name = "crispy_crab/ingredients_delete.html"
+    success_url = "/ingredients/list"
+
+
 class MenuItemsList(ListView):
     model = MenuItems
     template_name = "crispy_crab/menu_items_list.html"
@@ -49,6 +56,19 @@ class MenuItemsManagementCreate(CreateView):
     form_class = MenuItemsCreateForm
 
 
+class MenuItemsManagementUpdate(UpdateView):
+    model = MenuItems
+    template_name = "crispy_crab/menu_items_management_update.html"
+    form_class = MenuItemsManagementUpdateForm
+    success_url = "/menu_items_management/list"
+
+
+class MenuItemsManagementDelete(DeleteView):
+    model = MenuItems
+    template_name = "crispy_crab/menu_items_management_delete.html"
+    success_url = "/menu_items_management/list"
+
+
 class RecipeRequirementsList(ListView):
     model = RecipeRequirements
     template_name = "crispy_crab/recipe_requirements_list.html"
@@ -59,6 +79,18 @@ class RecipeRequirementsCreate(CreateView):
     template_name = "crispy_crab/recipe_requirements_create.html"
     form_class = RecipeRequirementsCreateForm
 
+
+class RecipeRequirementsUpdate(UpdateView):
+    model = RecipeRequirements
+    template_name = "crispy_crab/recipe_requirements_update.html"
+    form_class = RecipeRequirementsUpdateForm
+    success_url = "/recipe_requirements/list"
+
+
+class RecipeRequirementsDelete(DeleteView):
+    model = RecipeRequirements
+    template_name = "crispy_crab/recipe_requirements_delete.html"
+    success_url = "/menu_items_management/list"
 
 class PurchaseList(ListView):
     model = Purchase

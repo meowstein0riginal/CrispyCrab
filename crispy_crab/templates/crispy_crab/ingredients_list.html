@@ -18,8 +18,6 @@
     <th>Multi-Pack Quantity</th>
     <th>Multi-Pack Price</th>
     <th>Price Per Unit</th>
-    <th>Ingredient Update</th>
-      <th> </th>
   </tr>
 
 {% for ingredient in ingredients_list %}
@@ -31,7 +29,10 @@
   <td>{{ ingredient.multi_pack_quantity }} </td>
   <td>{{ ingredient.multi_pack_price }} </td>
   <td>{{ ingredient.price_per_unit }} </td>
-  <td><a href="{% url 'ingredientsupdate' ingredient.id %}"><h5>Edit</h5></a></td>
+  <td>
+    <a href="{% url 'ingredientsupdate' ingredient.id %}"><button>Edit</button></a>
+    <a href="{% url 'ingredientsdelete' ingredient.id %}"><button>Delete</button></a>
+  </td>
 
 
 </tr>

@@ -102,6 +102,9 @@ class RecipeRequirements(models.Model):
     def __str__(self):
         return f"{self.menu_item.item_name} | {self.ingredient.ing_name}: {self.quantity} {self.ingredient.unit}"
 
+    class Meta:
+        ordering = ['menu_item']
+
     def get_absolute_url(self):
         return "list"
 
@@ -115,7 +118,6 @@ class RecipeRequirements(models.Model):
 
 class Purchase(models.Model):
     order_time = models.DateTimeField(auto_now_add=True)
-    # menu_items = models.ForeignKey(MenuItems, on_delete=models.SET("Item withdrawn from the Menu"))
     menu_items = models.ForeignKey(MenuItems, on_delete=models.CASCADE)
     table = models.IntegerField()
 
