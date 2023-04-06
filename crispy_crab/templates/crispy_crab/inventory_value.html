@@ -1,0 +1,38 @@
+{% extends "crispy_crab/base.html" %}
+
+{% block content %}
+<hr>
+<h3>Inventory on stock</h3>
+<hr>
+<br>
+<br>
+<br>
+
+<table border = 1 id="inventory_value">
+  <tr>
+    <th>Name</th>
+    <th>Quantity</th>
+    <th>Minimal Quantity</th>
+    <th>Unit</th>
+    <th>Multi-Pack Quantity</th>
+    <th>Multi-Pack Price</th>
+    <th>Price Per Unit</th>
+  </tr>
+
+{% for ingredient in inventory %}
+<tr>
+  <td>{{ ingredient.ing_name }} </td>
+  <td>{{ ingredient.ing_quantity }} </td>
+  <td>{{ ingredient.minimal_quantity }} </td>
+  <td>{{ ingredient.unit }} </td>
+  <td>{{ ingredient.multi_pack_quantity }} </td>
+  <td>{{ ingredient.multi_pack_price }} </td>
+  <td>{{ ingredient.price_per_unit }} </td>
+  </tr>
+{% endfor %}
+</table>
+
+<br>
+<h4>Total Ingredient Value: {{ total|stringformat:".2f" }}</h4>
+
+{% endblock %}

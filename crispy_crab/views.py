@@ -45,6 +45,26 @@ class MenuItemsList(ListView):
     template_name = "crispy_crab/menu_items_list.html"
 
 
+class InventoryValue(TemplateView):
+    template_name = "crispy_crab/inventory_value.html"
+
+
+    def get_context_data(self, **kwargs):
+        # inv is a list of all ingredients that are on stock
+        inv = [item for item in Ingredients.objects.all() if item.ing_quantity > 0]
+
+        # calculates value of all ingredients ob stock
+        total = 0
+        for i in inv:
+            total += i.price_per_unit() * i.ing_quantity
+        context = super().get_context_data(**kwargs)
+        context['inventory'] = inv
+        context["total"] = total
+
+
+        return context
+
+
 class MenuItemsManagementList(ListView):
     model = MenuItems
     template_name = "crispy_crab/menu_items_management_list.html"
