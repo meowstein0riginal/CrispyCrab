@@ -8,6 +8,8 @@ from django.views.generic import ListView, TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from crispy_crab.forms import IngredientsCreateForm, MenuItemsCreateForm, RecipeRequirementsCreateForm
 from crispy_crab.forms import IngredientsUpdateForm, MenuItemsManagementUpdateForm, RecipeRequirementsUpdateForm
+from datetime import datetime
+
 from django.http import HttpResponse, HttpRequest
 
 from django.core.exceptions import SuspiciousOperation
@@ -112,9 +114,20 @@ class RecipeRequirementsDelete(DeleteView):
     template_name = "crispy_crab/recipe_requirements_delete.html"
     success_url = "/menu_items_management/list"
 
-class PurchaseList(ListView):
+class PurchaseList(TemplateView):
     model = Purchase
     template_name = "crispy_crab/purchase_list.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["purchase_list"] = [i for i in Purchase.objects.all()]
+        today = datetime.now()
+        context["todays_purchases"] = [i for i in Purchase.objects.all() if str(i.order_time.date()).strip() == str(today.date()).strip()]
+        revenue = 0
+        for i in context["todays_purchases"]:
+            revenue += i.menu_items.item_price
+        context["revenue"] = revenue
+        return context
 
 
 class PurchaseCreate(TemplateView):

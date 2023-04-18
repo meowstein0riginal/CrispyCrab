@@ -2,12 +2,39 @@
 
 {% block content %}
 <hr>
-<h3>Purchases</h3>
+<h3>Today's purchases</h3>
 <hr>
 <br>
 <a href="{% url 'purchasecreate'%}"><button class="btn">Add Order</button></a>
 <br>
 <br>
+
+<table border = 1 id="todays_purchase_table">
+  <tr>
+    <th>Order Number</th>
+    <th>Order Datetime</th>
+    <th>Menu items</th>
+    <th>Table</th>
+  </tr>
+
+{% for purchase in todays_purchases %}
+<tr>
+  <td>{{ purchase.id }} </td>
+  <td>{{ purchase.order_time }} </td>
+  <td>{{ purchase.menu_items }} </td>
+  <td>{{ purchase.table }} </td>
+
+
+</tr>
+{% endfor %}
+
+</table>
+<br>
+<h4>Today's revenue: {{ revenue|stringformat:".2f" }}</h4>
+
+<hr>
+
+<h3>All purchases</h3>
 
 <table border = 1 id="purchase_table">
   <tr>

@@ -2,8 +2,8 @@
 *******************************
 TO DO:
 
+- check why dont know yet burger can be ordered but is not on menu
 - logging in for customers and restaurant employees
-- total revenue of the day for restaurant employees
 - frontend css
 
  ************************
