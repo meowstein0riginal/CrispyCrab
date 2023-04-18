@@ -3,7 +3,6 @@
 TO DO:
 
 - logging in for customers and restaurant employees
-- total cost of inventory for restaurant employees
 - total revenue of the day for restaurant employees
 - frontend css
 
