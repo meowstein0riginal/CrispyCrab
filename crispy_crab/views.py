@@ -135,7 +135,7 @@ class PurchaseCreate(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["menu_items"] = [item for item in MenuItems.objects.all() if item.is_available()]
+        context["menu_items"] = [item for item in MenuItems.objects.all() if item.is_available() and item.item_description != "recipe requirements not complete"]
         return context
 
     #subtracts ingredients from ingredient list
