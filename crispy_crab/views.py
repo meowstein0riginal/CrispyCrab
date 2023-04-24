@@ -8,35 +8,43 @@ from django.views.generic import ListView, TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from crispy_crab.forms import IngredientsCreateForm, MenuItemsCreateForm, RecipeRequirementsCreateForm
 from crispy_crab.forms import IngredientsUpdateForm, MenuItemsManagementUpdateForm, RecipeRequirementsUpdateForm
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 from datetime import datetime
 
 from django.http import HttpResponse, HttpRequest
 
 from django.core.exceptions import SuspiciousOperation
+@login_required
+def logout_view(request):
+    logout(request)
+    return redirect("../")
+
 
 class HomeView(TemplateView):
   template_name = "crispy_crab/home.html"
 
 
-class IngredientsList(ListView):
+class IngredientsList(LoginRequiredMixin, ListView):
     model = Ingredients
     template_name = "crispy_crab/ingredients_list.html"
 
 
-class IngredientsCreate(CreateView):
+class IngredientsCreate(LoginRequiredMixin, CreateView):
     model = Ingredients
     template_name = "crispy_crab/ingredients_create.html"
     form_class = IngredientsCreateForm
 
 
-class IngredientsUpdate(UpdateView):
+class IngredientsUpdate(LoginRequiredMixin, UpdateView):
     model = Ingredients
     template_name = "crispy_crab/ingredients_update.html"
     form_class = IngredientsUpdateForm
     success_url = "/ingredients/list"
 
 
-class IngredientsDelete(DeleteView):
+class IngredientsDelete(LoginRequiredMixin, DeleteView):
     model = Ingredients
     template_name = "crispy_crab/ingredients_delete.html"
     success_url = "/ingredients/list"
@@ -47,7 +55,7 @@ class MenuItemsList(ListView):
     template_name = "crispy_crab/menu_items_list.html"
 
 
-class InventoryValue(TemplateView):
+class InventoryValue(LoginRequiredMixin, TemplateView):
     template_name = "crispy_crab/inventory_value.html"
 
 
@@ -67,54 +75,54 @@ class InventoryValue(TemplateView):
         return context
 
 
-class MenuItemsManagementList(ListView):
+class MenuItemsManagementList(LoginRequiredMixin, ListView):
     model = MenuItems
     template_name = "crispy_crab/menu_items_management_list.html"
 
 
-class MenuItemsManagementCreate(CreateView):
+class MenuItemsManagementCreate(LoginRequiredMixin, CreateView):
     model = MenuItems
     template_name = "crispy_crab/menu_items_management_create.html"
     form_class = MenuItemsCreateForm
 
 
-class MenuItemsManagementUpdate(UpdateView):
+class MenuItemsManagementUpdate(LoginRequiredMixin, UpdateView):
     model = MenuItems
     template_name = "crispy_crab/menu_items_management_update.html"
     form_class = MenuItemsManagementUpdateForm
     success_url = "/menu_items_management/list"
 
 
-class MenuItemsManagementDelete(DeleteView):
+class MenuItemsManagementDelete(LoginRequiredMixin, DeleteView):
     model = MenuItems
     template_name = "crispy_crab/menu_items_management_delete.html"
     success_url = "/menu_items_management/list"
 
 
-class RecipeRequirementsList(ListView):
+class RecipeRequirementsList(LoginRequiredMixin, ListView):
     model = RecipeRequirements
     template_name = "crispy_crab/recipe_requirements_list.html"
 
 
-class RecipeRequirementsCreate(CreateView):
+class RecipeRequirementsCreate(LoginRequiredMixin, CreateView):
     model = RecipeRequirements
     template_name = "crispy_crab/recipe_requirements_create.html"
     form_class = RecipeRequirementsCreateForm
 
 
-class RecipeRequirementsUpdate(UpdateView):
+class RecipeRequirementsUpdate(LoginRequiredMixin, UpdateView):
     model = RecipeRequirements
     template_name = "crispy_crab/recipe_requirements_update.html"
     form_class = RecipeRequirementsUpdateForm
     success_url = "/recipe_requirements/list"
 
 
-class RecipeRequirementsDelete(DeleteView):
+class RecipeRequirementsDelete(LoginRequiredMixin, DeleteView):
     model = RecipeRequirements
     template_name = "crispy_crab/recipe_requirements_delete.html"
     success_url = "/menu_items_management/list"
 
-class PurchaseList(TemplateView):
+class PurchaseList(LoginRequiredMixin, TemplateView):
     model = Purchase
     template_name = "crispy_crab/purchase_list.html"
 
@@ -130,7 +138,7 @@ class PurchaseList(TemplateView):
         return context
 
 
-class PurchaseCreate(TemplateView):
+class PurchaseCreate(LoginRequiredMixin, TemplateView):
     template_name = "crispy_crab/purchase_create.html"
 
     def get_context_data(self, **kwargs):
@@ -157,7 +165,7 @@ class PurchaseCreate(TemplateView):
         return redirect("/purchases/list")
 
 
-class RestockList(TemplateView):
+class RestockList(LoginRequiredMixin, TemplateView):
     template_name = "crispy_crab/restock_list.html"
 
     def get_context_data(self, **kwargs):

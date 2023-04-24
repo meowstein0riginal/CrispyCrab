@@ -16,10 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from crispy_crab import views
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.HomeView.as_view(), name='home'),
+    path('accounts/login/', auth_views.LoginView.as_view(), name="login"),
+    path('logout/', views.logout_view, name='logout'),
 
     path('ingredients/list', views.IngredientsList.as_view(), name='ingredientslist'),
     path('ingredients/create', views.IngredientsCreate.as_view(), name='ingredientscreate'),

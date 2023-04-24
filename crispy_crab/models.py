@@ -114,17 +114,10 @@ class RecipeRequirements(models.Model):
         return ppu * self.quantity
 
 
-
-
 class Purchase(models.Model):
     order_time = models.DateTimeField(auto_now_add=True)
     menu_items = models.ForeignKey(MenuItems, on_delete=models.CASCADE)
     table = models.IntegerField()
-
-
-
-
-
 
     def get_absolute_url(self):
         return "list"

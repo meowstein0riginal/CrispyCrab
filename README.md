@@ -2,6 +2,9 @@
 *******************************
 TO DO:
 
+- 
+- 
+- 
 - logging in for customers and restaurant employees
 - frontend css
 
@@ -44,4 +47,3 @@ Prerequisites:
     Django
     Git
     Command Line
-
