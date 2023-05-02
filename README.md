@@ -1,8 +1,11 @@
 ﻿# CrispyCrab
 *******************************
+To check functionalities for a logged user use:
+username: employee
+password: squarepants
+*******************************
 TO DO:
 
-- redirecting to info while logging out
 - frontend css
 
  ************************
