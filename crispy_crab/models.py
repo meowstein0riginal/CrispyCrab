@@ -69,7 +69,10 @@ class MenuItems(models.Model):
         return round(price, 2)
 
     def ingredients(self):
-        return [i.ingredient.ing_name for i in self.reciperequirements_set.all()]
+        ing_list = [i.ingredient.ing_name for i in self.reciperequirements_set.all()]
+        ing_string = ", ".join(x for x in ing_list)
+        return ing_string
+
 
     # returns True if there is enough ingredients to make one meal
     def is_available(self):

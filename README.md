@@ -2,10 +2,7 @@
 *******************************
 TO DO:
 
-- 
-- 
-- 
-- logging in for customers and restaurant employees
+- redirecting to info while logging out
 - frontend css
 
  ************************
